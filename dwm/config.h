@@ -61,7 +61,6 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *floatstcmd[]  = { "st","-c", "floatst" ,NULL };
 static const char *chromecmd[]  = { "chromium", NULL };
-static const char *lockcmd[]  = { "slock", NULL };
 static const char *filecmd[]  = { "thunar", NULL };
 
 static Key keys[] = {
@@ -70,8 +69,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = filecmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_c,      spawn,          {.v = chromecmd } },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = floatstcmd } },
+	{ 0,							              XK_Print,  spawn,          SHCMD("gnome-screenshot -i")},
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -93,6 +92,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
+	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -1.25} },
+	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
